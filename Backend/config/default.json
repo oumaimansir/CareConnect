@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-    "mongo_url": "mongodb://127.0.0.1:27017/authlogin",
-=======
     "mongo_url": "mongodb://127.0.0.1:27017/careconnectBD",
->>>>>>> firstBranch
     "jwtSecret" : "jkjkjfj45545",
     "tokenExpire" : "24h"
     

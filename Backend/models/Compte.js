@@ -35,6 +35,10 @@ etat:{
     type:String,
   default:"active"
 },
+role:{
+    type:String,
+    required:true,
+},
 });
 
 //créer un modèle basé sur ce schéma
