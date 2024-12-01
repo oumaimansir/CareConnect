@@ -13,6 +13,7 @@ router.post("/login",(req,res)=>{
     }
 
     Compte.findOne({email:email}).then((compte)=>{
+        console.log('Fetched Compte:', compte);
         if(!compte){
             return res.status(401).json({error:"USer not found"});
         }
@@ -31,7 +32,11 @@ router.post("/login",(req,res)=>{
                         console.error(err);
                         return res.status(500).json({error:"Internal server error"});
                     }
-                    return res.status(200).json({token});
+                    return res.status(200).json({
+                        token: token,
+                        nom: compte.nom,
+                        prenom: compte.prenom, // Ensure these fields exist in your model
+                        });
                 }
             );
         });

@@ -1,19 +1,32 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
+import { CookieService } from 'ngx-cookie-service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { RegisterUserComponent } from './register-user/register-user.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { AppointmentComponent } from './appointment/appointment.component'; 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RegisterUserComponent,
+    HomeComponent,
+    LoginComponent,
+    AppointmentComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule 
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideHttpClient(withFetch()),
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

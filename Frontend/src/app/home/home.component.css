@@ -1,0 +1,10 @@
+.logo {
+    width: auto;  /* Ensure the width is adjusted automatically based on the height */
+    height: 150px; /* You can adjust the height to the desired logo size */
+    max-width: 100%; /* Ensures it doesn’t exceed the container width */
+  }
+  .carousel-item img {
+    width: 100%; /* Adjust the width as needed */
+    height: 700px; /* Keep the aspect ratio */
+     /* Optional: You can restrict the image's maximum width */
+  }
