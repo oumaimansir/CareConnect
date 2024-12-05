@@ -1,6 +1,5 @@
 {
     "mongo_url": "mongodb://127.0.0.1:27017/careconnectBD",
-
     "jwtSecret" : "jkjkjfj45545",
     "tokenExpire" : "24h"
     

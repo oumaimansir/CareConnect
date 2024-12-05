@@ -8,14 +8,20 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { AppointmentComponent } from './appointment/appointment.component'; 
+import { AppointmentComponent } from './appointment/appointment.component';
+import { ManageCompteComponent } from './manage-compte/manage-compte.component';
+import { ConsulterCompteComponent } from './consulter-compte/consulter-compte.component';
+import { SideMenuComponent } from './side-menu/side-menu.component'; 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterUserComponent,
     HomeComponent,
     LoginComponent,
-    AppointmentComponent
+    AppointmentComponent,
+    ManageCompteComponent,
+    ConsulterCompteComponent,
+    SideMenuComponent
   ],
   imports: [
     BrowserModule,

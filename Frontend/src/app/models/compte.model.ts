@@ -8,4 +8,6 @@ export interface Compte {
     adresse : string;
     datenaissance : Date;
     etat : string;
+    token:string;
+    role:string
 }

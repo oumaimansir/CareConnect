@@ -59,6 +59,18 @@ export class AuthentificationService {
   getUser(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/all`);
   }
+  getUserByEmail(email: string): Observable<any> {
+    const url='http://localhost:3001/api/patients/email';
+    const body = { email: email};
+    return this.http.post<any>(url, body).pipe(
+      catchError((error) => {
+        console.error('Error during login:', error);
+        return throwError('Login failed. Please try again.'); // Vous pouvez personnaliser ce message d'erreur
+      })
+    );
+  }
+
+  
 
   updateUser(id: string, userData: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/${id}`, userData);
@@ -97,7 +109,9 @@ export class AuthentificationService {
   isAdmin(): boolean {
     return this.getUserRole() === 'admin';
   }
-
+  getDocteurs (): Observable<any> {
+    return this.http.get<any>(`http://localhost:3001/api/docteur/all`);
+  }
 
 
 

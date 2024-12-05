@@ -1,0 +1,37 @@
+
+  <div class="container-layout">
+    <app-side-menu></app-side-menu>
+    <!-- Main Content -->
+    <div class="content-area">
+      <div class="form-container">
+        <!-- Pills content -->
+        <div class="tab-content">
+          <!-- Consulter Compte Tab -->
+          <div class="tab-pane fade show active" id="pills-consulter" role="tabpanel">
+            <h5 class="mb-4">Consulter Compte</h5>
+            <form (ngSubmit)="rechercher()">
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <input type="email" id="consulterEmail" class="form-control" [value]="compte.email || ''" readonly/>
+                
+              </div>
+              <div class="form-outline mb-4">
+                <input type="text" id="consulternom" class="form-control" [value]="compte.nom || ''" readonly/>
+                
+              </div>
+              <div class="form-outline mb-4">
+                <input type="text" id="consulterprenom" class="form-control" [value]="compte.prenom || ''" readonly/>
+                
+              </div>
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-block mb-4">Rechercher</button>
+            </form>
+          </div>
+
+          
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- Include MDB Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
