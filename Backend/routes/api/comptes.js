@@ -227,5 +227,21 @@ router.put('/:id/etat', async (req, res) => {
       res.status(500).json({ message: 'Erreur lors de la suppression de l\'utilisateur', error });
     }
   });
+  // Route pour récupérer un compte par email
+router.post('/email', async (req, res) => {
+    const { email } = req.body;
+
+    try {
+        const compte = await Compte.findOne({ email: email });
+        if (!compte) {
+            return res.status(404).json({ message: 'Compte non trouvé' });
+        }
+
+        res.status(200).json(compte);
+    } catch (error) {
+        res.status(500).json({ message: 'Erreur lors de la récupération du compte', error });
+    }
+});
+
   
 module.exports=router;

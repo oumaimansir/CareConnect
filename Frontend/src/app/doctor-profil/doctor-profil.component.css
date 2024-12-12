@@ -1,0 +1,61 @@
+/* Conteneur principal */
+.doctor-profile {
+  background-color: #f8fdff;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 900px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Header pour aligner l'icône et les infos */
+.doctor-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Icône docteur */
+.doctor-icon {
+  font-size: 80px;
+  color: #17a2b8; /* Couleur bleue */
+  background-color: #e3f2fd;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #17a2b8;
+}
+
+/* Informations docteur */
+.doctor-info {
+  flex: 1;
+}
+
+.doctor-name {
+  font-size: 28px;
+  font-weight: bold;
+  color: #004085;
+  margin: 0;
+}
+
+.reserve-button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #ffc107;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+.reserve-button:hover {
+  background-color: #e0a800;
+}

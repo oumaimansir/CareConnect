@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const config = require("config");
 
+const auth = require("./middleware/auth");
 const users =require("./routes/api/users");
 const cors = require('cors');
 const app = express();

@@ -10,7 +10,9 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthentificationService {
+  
   private apiUrl ='http://localhost:3001/api/comptes';
+  private apiUrlPatients ='http://localhost:3001/api/patients';
 
   private userNameSubject = new BehaviorSubject<string | null>(null);
   userName$ = this.userNameSubject.asObservable();
@@ -69,9 +71,20 @@ export class AuthentificationService {
       })
     );
   }
-
+  getCompteByEmail(email: string): Observable<any> {
+    const body = { email: email};
+    return this.http.post<any>(`${this.apiUrl}/email`, body).pipe(
+      catchError((error) => {
+        console.error('Error during login:', error);
+        return throwError('Login failed. Please try again.'); // Vous pouvez personnaliser ce message d'erreur
+      })
+    );
+  }
   
-
+  updateCompte(id: string, compteData: any): Observable<any> {
+    
+    return this.http.put<any>(`${this.apiUrlPatients}/${id}`, compteData);
+  }
   updateUser(id: string, userData: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/${id}`, userData);
   }
@@ -113,7 +126,9 @@ export class AuthentificationService {
     return this.http.get<any>(`http://localhost:3001/api/docteur/all`);
   }
 
-
+  getDoctorById(doctorId: string): Observable<any> {
+    return this.http.get<any>(`http://localhost:3001/api/docteur/${doctorId}`);
+  }
 
 
 

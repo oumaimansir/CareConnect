@@ -1,53 +1,25 @@
-<div class="container-fluid full-screen-bg  vh-100 d-flex align-items-center justify-content-center">
-    <div class="appointment-form w-50 text-center p-5 wow zoomIn" data-wow-delay="0.6s" 
-     style="border-radius: 10px; background: rgba(200, 200, 200, 0.8);">
-        <h1 class="text mb-4">Réservez un Rendez-vous</h1>
-        <form>
-            <div class="row g-3">
-                <!-- Champ pour afficher le nom d'utilisateur -->
-                <div class="col-12">
-                    <label for="userName" class="form-label text-white">Nom</label>
-                    <input
-                        type="text"
-                        id="userName"
-                        class="form-control bg-light border-0"
-                        [value]="userName"
-                        readonly
-                    />
-                </div>
-
-                
-                <!-- Sélection de la date -->
-                <div class="col-12 col-sm-6">
-                    <label class="form-label text-white">Date</label>
-                    <div class="date" id="date1" data-target-input="nearest">
-                        <input type="date" 
-                               class="form-control bg-light border-0 datetimepicker-input" 
-                               placeholder="Date du rendez-vous" 
-                               data-target="#date1" 
-                               data-toggle="datetimepicker" 
-                               style="height: 55px;">
-                    </div>
-                </div>
-
-                <!-- Sélection de l'heure -->
-                <div class="col-12 col-sm-6">
-                    <label class="form-label text-white">Heure</label>
-                    <div class="time" id="time1" data-target-input="nearest">
-                        <input type="time" 
-                               class="form-control bg-light border-0 datetimepicker-input" 
-                               placeholder="Heure du rendez-vous" 
-                               data-target="#time1" 
-                               data-toggle="datetimepicker" 
-                               style="height: 55px;">
-                    </div>
-                </div>
-
-                <!-- Bouton pour soumettre -->
-                <div class="col-12">
-                    <button class="btn btn-dark w-100 py-3" type="submit">Prendre Rendez-vous</button>
-                </div>
-            </div>
-        </form>
+<div class="full-screen-bg">
+    <div class="appointment-form">
+      <h3 class="text">Réservez un rendez-vous</h3>
+  
+      <form (ngSubmit)="submitForm()">
+        <div>
+            <label for="patientName">Nom du patient:</label>
+            <input type="text" id="patientName" [(ngModel)]="formData.userName" name="userName" readonly />
+          </div>
+        
+          
+          <label for="date">Date:</label>
+          <input type="date" id="date" [(ngModel)]="formData.date" name="date" required />
+        
+  
+        <div>
+          <label for="heure">Heure:</label>
+          <input type="time" id="heure" [(ngModel)]="formData.heure" name="heure" required />
+        </div>
+  
+        <button type="submit" class="reserve-button">Réserver le rendez-vous</button>
+      </form>
     </div>
-</div>
+  </div>
+  

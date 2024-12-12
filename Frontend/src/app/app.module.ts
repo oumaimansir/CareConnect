@@ -7,11 +7,12 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppointmentComponent } from './appointment/appointment.component';
 import { ManageCompteComponent } from './manage-compte/manage-compte.component';
 import { ConsulterCompteComponent } from './consulter-compte/consulter-compte.component';
-import { SideMenuComponent } from './side-menu/side-menu.component'; 
+import { SideMenuComponent } from './side-menu/side-menu.component';
+import { DoctorProfilComponent } from './doctor-profil/doctor-profil.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,12 +22,14 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
     AppointmentComponent,
     ManageCompteComponent,
     ConsulterCompteComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    DoctorProfilComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     HttpClientModule 
   ],
   providers: [

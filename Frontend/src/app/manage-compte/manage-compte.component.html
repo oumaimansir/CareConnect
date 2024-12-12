@@ -1,31 +1,73 @@
+<div class="container-layout">
+  <app-side-menu></app-side-menu>
 
-  <div class="container-layout">
-    <app-side-menu></app-side-menu>
-
-    <!-- Main Content -->
-    <div class="content-area">
-      <div class="form-container">
-        <!-- Pills content -->
-        <div class="tab-content">
-          <!-- Consulter Compte Tab -->
-          <div class="tab-pane fade show active" id="pills-consulter" role="tabpanel">
-            <h5 class="mb-4">Modifier Compte</h5>
-            <form>
-              <!-- Email input -->
-              <div class="form-outline mb-4">
-                <input type="email" id="consulterEmail" class="form-control" />
-                <label class="form-label" for="consulterEmail">Email</label>
-              </div>
-              <!-- Submit button -->
-              <button type="submit" class="btn btn-primary btn-block mb-4">Rechercher</button>
-            </form>
-          </div>
-
+  <!-- Main Content -->
+  <div class="content-area">
+    <div class="form-container">
+      <!-- Pills content -->
+      <div class="tab-content">
+        <!-- Consulter Compte Tab -->
+        <div class="tab-pane fade show active" id="pills-consulter" role="tabpanel">
+          <h5 class="mb-4">Modifier Compte</h5>
           
+            <!-- Email input -->
+            <div class="form-group">
+              <input type="email" id="email" name="email" class="form-control" placeholder="E-mail "   [(ngModel)]="emailToSearch" required />
+              
+            </div>
+            <button (click)="search()" class="btn btn-secondary mb-3">
+              Rechercher
+            </button>
+            <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+            <!-- Nom -->
+            <div class="form-group">
+              <input type="text" id="nom" name="nom" [value]="userdata.nom " placeholder="Nom " class="form-control" />
+              
+            </div>
+
+            <!-- Prénom -->
+            <div class="form-group">
+              <input type="text" id="prenom" [value]="userdata.prenom " name="prenom" placeholder="Prénom " class="form-control" />
+              
+            </div>
+
+            <!-- Numéro de téléphone -->
+            <div class="form-group">
+              <input type="text" id="numtel" [value]="userdata.numtel " name="numtel" placeholder="Numéro de Téléphone" class="form-control" />
+             
+            </div>
+
+            <!-- Adresse -->
+            <div class="form-group">
+              <input type="text" id="adresse" [value]="userdata.adresse " name="adresse" placeholder="Adresse" class="form-control" />
+            
+            </div>
+
+            <!-- Date de naissance -->
+            <div class="form-group">
+              <input type="date" id="datenaissance"[value]="userdata.datenaissance?.split('T')[0]" name="datenaissance"  class="form-control" />
+              
+            </div>
+
+            <!-- État -->
+            <div class="form-group">
+              <select id="etat" name="etat" class="form-control">
+                <option value="actif">Active</option>
+                <option value="inactif">Inactive</option>
+              </select>
+              <label class="form-label" for="etat"></label>
+            </div>
+
+           
+
+            <!-- ID caché -->
+            <input type="hidden" formControlName="id" />
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">Mettre à jour</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-  </div>
-  <!-- Include MDB Bootstrap JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
-
+</div>

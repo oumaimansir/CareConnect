@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthentificationService } from '../services/authentification.service';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-home',
@@ -7,32 +8,37 @@ import { AuthentificationService } from '../services/authentification.service';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit{
-  userName: string ='';
+  userName: string = '';
+  doctors: any[] = [];
 
-  ngOnInit() {
+  constructor(
+    private userService: AuthentificationService,
+    private router: Router  // Inject Router service
+  ) {}
+
+  ngOnInit(): void {
     this.userService.userName$.subscribe((name) => {
       this.userName = name || 'Utilisateur';
-  })
-  
-  }
-  doctorName: string = '';
-  specialty: string = '0'; // Default value for 'Sélectionner spécialité'
-  doctors: any[] = [];
-  filteredDoctors: any[] = [];
+    });
 
-  constructor(private userService: AuthentificationService) {
-    this.filteredDoctors = this.doctors; // Initialisation avec tous les médecins
+    this.searchDoctors();  // Fetch doctors when the component loads
   }
 
   searchDoctors(): void {
     this.userService.getDocteurs().subscribe(
       (data: any[]) => {
-        this.doctors = data; // Stocke les utilisateurs récupérés
+        this.doctors = data;
         console.log(data);
       },
       (error) => {
-        console.error('Erreur lors de la récupération des utilisateurs', error);
+        console.error('Error while fetching doctors', error);
       }
     );
+  }
+
+  // Navigate to the doctor's profile page when clicked
+  viewDoctorProfile(doctorId: string): void {
+    console.log('Navigating to doctor profile with ID:', doctorId);  // Check if this logs correctly
+    this.router.navigate([`/doctor/${doctorId}`]);  // Ensure correct path
   }
 }

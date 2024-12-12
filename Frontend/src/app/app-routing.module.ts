@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { AppointmentComponent } from './appointment/appointment.component';
 import { ManageCompteComponent } from './manage-compte/manage-compte.component';
 import { ConsulterCompteComponent } from './consulter-compte/consulter-compte.component';
+import { DoctorProfilComponent } from './doctor-profil/doctor-profil.component';
 
 const routes: Routes = [
   {path : 'registerUser', component:RegisterUserComponent},
@@ -16,7 +17,7 @@ const routes: Routes = [
   {path : 'consulter',component:ConsulterCompteComponent},
   {path : 'pills_modifier',component:ManageCompteComponent},
   {path : 'pills_consulter',component:ConsulterCompteComponent},
-  
+  { path: 'doctor/:id', component: DoctorProfilComponent },
   
 ];
 
