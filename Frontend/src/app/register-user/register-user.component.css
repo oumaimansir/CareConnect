@@ -1,0 +1,106 @@
+/* Basic Styling */
+.container.register {
+    background: #f8f9fa;
+    padding: 3%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.register-left {
+    text-align: center;
+    color: darkblue;
+    margin-top: 4%;
+}
+
+.register-left img {
+    width: 50%;
+    margin-bottom: 10%;
+}
+
+.register-right {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #0062E6;
+    color: white;
+    border-radius: 20px;
+}
+
+.btnRegister {
+    background-color: #0062E6;
+    color: white;
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-weight: bold;
+    border: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.btnRegister:hover {
+    background-color: #0056b3;
+}
+@media (max-width: 768px) {
+    .register {
+        padding: 10px;
+    }
+
+    .register-left,
+    .register-right {
+        margin-top: 20px;
+    }
+
+    .btnRegister {
+        width: 100%;
+    }
+}
+/* Floating Label Effect */
+.form-group input:focus {
+    border-color: #0062E6;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 98, 230, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+.form-group label {
+    font-size: 12px;
+    color: #999;
+    position: absolute;
+    top: -20px;
+    left: 10px;
+    transition: all 0.3s ease-in-out;
+}
+.form-group {
+    margin-bottom: 50px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.espace{
+    margin-bottom: 50px;
+}
+.heading-container {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+   
+}
+
+.register-heading {
+    font-size: 2rem;  /* Ajuste la taille du texte */
+    color: darkblue;      /* Couleur du texte */
+}

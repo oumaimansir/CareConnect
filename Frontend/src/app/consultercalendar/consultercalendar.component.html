@@ -1,0 +1,82 @@
+<div id="calendar-table-container" class="container">
+  <div class="calendar-section">
+    <h2>Appointments Calendar</h2>
+    <!-- Calendar -->
+    <mwl-calendar-month-view
+      [viewDate]="viewDate"
+      (dayClicked)="onDayClick($event.day.date)"
+    >
+    </mwl-calendar-month-view>
+  </div>
+
+  <div class="table-section">
+    <h3>Appointments for {{ selectedDate | date: 'yyyy-MM-dd' }}</h3>
+
+    <div *ngIf="filteredAppointments.length > 0; else noAppointments">
+      <table class="table table-sm">
+        <thead>
+          <tr class="table-success">
+            <th scope="col">Temps</th>
+            <th scope="col">Etat</th>
+            <th scope="col">Nom de Patient</th>
+            <th scope="col">Numéro de téléphone</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let appointment of filteredAppointments">
+            <td>{{ appointment.heure }}</td>
+            <td>{{ appointment.etat }}</td>
+            <td>{{ appointment.patient?.nom }} {{ appointment.patient?.prenom }}</td>
+            <td>{{ appointment.patient?.numtel }}</td>
+            <td>
+              <button
+                class="btn btn-outline-success" type="button"
+                (click)="openModal(appointment)"   >
+                Changer état
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- No appointments message -->
+    <ng-template #noAppointments>
+      <p>No appointments for the selected date.</p>
+    </ng-template>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': isModalOpen}" *ngIf="isModalOpen">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Change Appointment Status</h5>
+        <button type="button" class="close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="updateEtat()">
+          <div class="form-group">
+            <label for="patient">Patient</label>
+            <input type="text" id="patient" class="form-control" [value]="selectedAppointment.patient?.nom + ' ' + selectedAppointment.patient?.prenom" disabled />
+          </div>
+          <div class="form-group">
+            <label for="status">Select Status</label>
+            <select id="status" class="form-control" [(ngModel)]="selectedAppointment.etat" name="status">
+              <option value="terminé">Terminé</option>
+              <option value="confirmé">Confirmé</option>
+              <option value="annulé">Annulé</option>
+              <option value="programmé">Programmé</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Update Status</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
