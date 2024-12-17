@@ -27,7 +27,7 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConsulterUserComponent } from './consulter-user/consulter-user.component';
 import { ModifierUserComponent } from './modifier-user/modifier-user.component';
 import { SideMenuUserComponent } from './side-menu-user/side-menu-user.component';
-
+import {MapComponent} from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,8 @@ import { SideMenuUserComponent } from './side-menu-user/side-menu-user.component
     ConsultercalendarComponent,
     ConsulterUserComponent,
     ModifierUserComponent,
-    SideMenuUserComponent
+    SideMenuUserComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,

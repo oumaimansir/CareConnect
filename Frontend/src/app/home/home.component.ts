@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit{
       },
       (error) => {
         console.error('Error while fetching doctors', error);*/
-
+        specialities: string[] = [];
   userName: string ='';
   email: string='';
   role: string='';
@@ -48,6 +48,7 @@ localisation:string='';
   ngOnInit() {
     this.userName=this.cookieService.get('userName');
     this.role=this.cookieService.get('role');
+    this.fetchSpecialities();
     /*
     this.userService.userName$.subscribe((name) => {
       this.userName = name || 'Utilisateur';
@@ -76,6 +77,7 @@ console.log('email: ',this.email);
   }
 
   searchDoctors(): void {
+    console.log('specialite  :', this.specialite);
     this.userService.getDocteurs(this.nom, this.specialite, this.localisation).subscribe(
       (data: any[]) => {
         if (data.length === 0) {
@@ -119,6 +121,20 @@ console.log('email: ',this.email);
     this.cookieService.delete('role'); // Supprime role si présent
     // Redirection vers la page de connexion
     this.router.navigate(['/login']);
+  }
+
+  fetchSpecialities(): void {
+    this.userService.getDocteurs2().subscribe((doctors) => {
+      // Extract unique specialities from doctors
+      const specialitySet = new Set<string>();
+      doctors.forEach((doctor: any) => {
+        if (doctor.specialite) {
+          specialitySet.add(doctor.specialite);
+          
+        }
+      });
+      this.specialities = Array.from(specialitySet);
+    });
   }
 
 }

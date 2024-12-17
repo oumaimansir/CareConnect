@@ -146,9 +146,9 @@ export class AuthentificationService {
     return this.getUserRole() === 'admin';
   }
 
- /* getDocteurs (): Observable<any> {
+  getDocteurs2 (): Observable<any> {
     return this.http.get<any>(`http://localhost:3001/api/docteur/all`);
-  }*/
+  }
 
   getDoctorById(doctorId: string): Observable<any> {
     return this.http.get<any>(`http://localhost:3001/api/docteur/${doctorId}`);

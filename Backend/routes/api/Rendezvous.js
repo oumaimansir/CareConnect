@@ -217,7 +217,7 @@ router.post("/available-slots", async (req, res) => {
             },
             docteur: docteurId,
            // etat: { $ne: "annulé" } // Exclure les rendez-vous annulés
-           etat: { $nin: ["annulé", "programmé","terminé"] }
+           etat: { $nin: ["annulé", "terminé"] }
         });
 
         // Plages horaires de la journée (ex: de 08:00 à 18:00 avec un intervalle de 30 minutes)

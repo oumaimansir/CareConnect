@@ -1,21 +1,28 @@
 <div *ngIf="doctor" class="doctor-profile">
-  <div class="doctor-header">
-    <!-- Icône docteur à la place de la photo -->
-    <div class="doctor-icon">
-      <i class="fas fa-user-md"></i> <!-- Icône docteur -->
+  <div class="doctor-header" style="display: flex;">
+    <!-- Left Side: Doctor's Information -->
+    <div class="doctor-details" style="flex: 1;">
+      <div class="doctor-icon">
+        <i class="fas fa-user-md"></i>
+      </div>
+      <div class="doctor-info">
+        <h3 class="doctor-name">{{ doctor.nom }} {{ doctor.prenom }}</h3>
+        <p class="doctor-specialty"><strong>Spécialité :</strong> {{ doctor.specialite }}</p>
+        <p class="doctor-address"><strong>Adresse :</strong> {{ doctor.adresse }}</p>
+        <p class="doctor-email"><strong>Email :</strong> {{ doctor.email }}</p>
+        <p class="doctor-phone"><strong>Téléphone :</strong> {{ doctor.numtel }}</p>
+        <p class="doctor-dob">
+          <strong>Date de naissance :</strong> {{ doctor.datenaissance | date }}
+        </p>
+        <button class="reserve-button" [routerLink]="['/appointment']" [queryParams]="{ doctorId: doctor._id }">
+          Réserver un rendez-vous
+        </button>
+      </div>
     </div>
-    
-    <!-- Informations du docteur -->
-    <div class="doctor-info">
-      <h3 class="doctor-name">{{ doctor.nom }} {{ doctor.prenom }}</h3>
-      <p class="doctor-specialty"><strong>Spécialité :</strong> {{ doctor.specialite }}</p>
-      <p class="doctor-address"><strong>Adresse :</strong> {{ doctor.adresse }}</p>
-      <p class="doctor-email"><strong>Email :</strong> {{ doctor.email }}</p>
-      <p class="doctor-phone"><strong>Téléphone :</strong> {{ doctor.numtel }}</p>
-      <p class="doctor-dob"><strong>Date de naissance :</strong> {{ doctor.datenaissance | date }}</p>
-      
-      <!-- Bouton Réserver un rendez-vous -->
-      <button class="reserve-button" [routerLink]="['/appointment']" [queryParams]="{ doctorId: doctor._id }">Réserver un rendez-vous</button>
+
+    <!-- Right Side: Doctor's Location on Map -->
+    <div class="doctor-map" style="flex: 1; height: 200px;">
+      <app-map [adresse]="doctor.adresse"></app-map>
     </div>
   </div>
 </div>

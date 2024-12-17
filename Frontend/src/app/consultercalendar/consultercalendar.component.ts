@@ -85,7 +85,7 @@ private getPatientData(idP: number){
     console.log('year ',year);
     console.log('month ',month);
     console.log('day ',day);
-    return `${year}-${day}-${month}`;
+    return `${year}-${month}-${day}`;
    }
 
   // Extract date from backend format (YYYY-DD-MM) and convert to YYYY-MM-DD

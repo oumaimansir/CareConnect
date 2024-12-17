@@ -136,7 +136,7 @@
                 <div class="col-lg-4 wow zoomIn" data-wow-delay="0.1s">
                     <div class="bg-primary d-flex flex-column p-5" style="height: 300px;">
                         <h3 class="text-white mb-3">Google maps</h3>
-
+                        <!--<app-map style="height: 100%; width: 100%;"></app-map>-->
                     </div>
                 </div>
                 <div class="col-lg-4 wow zoomIn" data-wow-delay="0.3s">
@@ -147,20 +147,13 @@
                             <input type="text"  [(ngModel)]="nom"  class="form-control bg-light border-0 datetimepicker-input"
                                 placeholder="Nom de Docteur" data-target="#date" data-toggle="datetimepicker" style="height: 40px;">
                         </div>
-                        <select   [(ngModel)]="specialite"  class="form-select bg-light border-0 mb-3" style="height: 40px;">
-                            <option selected>Sélectionner spécialité</option>
-                            <option value="Généraliste">Généraliste</option>
-                            <option value="Dentiste">Dentiste</option>
-                            <option value="Chirurgien">Chirurgien</option>
-                            <option value="Dermatologue">Dermatologue</option>
-                            <option value="Gynécologue">Gynécologue</option>
-                            <option value="Neurologue">Neurologue</option>
-                            <option value="Neutritionniste">Neutritionniste</option>
-                            <option value="Ophtalmologue">Ophtalmologue</option>
-                            <option value="Pédiatre">Pédiatre</option>
-                            <option value="Psychiatre">Psychiatre</option>
-
-                        </select>
+                        <select [(ngModel)]="specialite" class="form-select bg-light border-0 mb-3" style="height: 40px;">
+                          <option selected disabled>Sélectionner spécialité</option>
+                          <option *ngFor="let speciality of specialities" [value]="speciality">
+                              {{ speciality }}
+                          </option>
+                      </select>
+                      
                         <button class="btn btn-light" (click)="searchDoctors()">Chercher</button>
                     </div>
                 </div>
