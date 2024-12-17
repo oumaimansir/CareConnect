@@ -3,7 +3,9 @@ const bcrypt=require("bcryptjs");
 const config=require("config");
 const jwt=require("jsonwebtoken");
 const Patient=require("../../models/Patient");
+
 const auth = require("../../middleware/auth");
+
 router.post("/registerPatient", async (req, res) => {
     try {
         const { nom, prenom, numtel, email, password, adresse, datenaissance, role } = req.body;
@@ -238,6 +240,7 @@ router.put('/:id/etat', async (req, res) => {
       res.status(500).json({ message: 'Erreur lors de la suppression de patient', error });
     }
   });
+
 router.get("/current", auth, async (req, res) => {
     try {
         // Use the ID decoded by the auth middleware
@@ -252,5 +255,6 @@ router.get("/current", auth, async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 });
+
   
 module.exports=router;

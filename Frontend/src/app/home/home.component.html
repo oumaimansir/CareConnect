@@ -1,7 +1,7 @@
 
 
 
-        
+
 
     <!-- Topbar Start -->
     <div class="container-fluid bg-light ps-5 pe-0 d-none d-lg-block">
@@ -11,7 +11,7 @@
                     <small class="py-2"><i class="far fa-clock text-primary me-2"></i>Opening Hours: Mon - Tues : 6.00 am - 10.00 pm, Sunday Closed </small>
                 </div>
             </div>
-           
+
         </div>
     </div>
     <!-- Topbar End -->
@@ -21,13 +21,14 @@
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-5 py-3 py-lg-0">
         <a routerLink="/" class="navbar-brand p-0">
             <img class="logo" src="assets/img/Logo.png" alt="Logo">
-            
+
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
+
                 <a  class="nav-item nav-link active">Home</a>
                 <a  class="nav-item nav-link">About</a>
                 <a  class="nav-item nav-link">Service</a>
@@ -38,13 +39,27 @@
                         <a  class="dropdown-item">Our Dentist</a>
                         <a  class="dropdown-item">Testimonial</a>
                         <a  class="dropdown-item">Appointment</a>
+
                     </div>
                 </div>
             </div>
             <button type="button" class="btn text-dark" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
-            <li *ngIf="userName">{{ userName }}</li>
-            <li *ngIf="!userName"><a class="btn btn-primary py-2 px-4 ms-3" routerLink="/appointment">Appointment</a></li>
-           
+            <div class="btn-group">
+              <button type="button" *ngIf="userName== ''" routerLink="/login" class="btn btn-danger dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                Connecter
+              </button>
+              <button type="button" *ngIf="userName!= ''" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ userName }}
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" *ngIf="role== 'Assistant'" href="/consulterCalendar">Voir Calendrier</a>
+                <a class="dropdown-item" href="/consulterUser">Profile</a>
+                <a class="dropdown-item" (click)="logout()" >Déconnexion</a>
+              </div>
+            </div>
+
+
+
         </div>
     </nav>
     <!-- Navbar End -->
@@ -75,7 +90,7 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img class="w-100" src="assets/img/img2.jpg" alt="Image">
-                   
+
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-3 animated slideInDown">Bienvenue sur CareConnect</h4>
@@ -90,10 +105,12 @@
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-3 animated slideInDown">Bienvenue sur CareConnect</h4>
                             <h2 class="display-1 text-white mb-md-4 animated zoomIn">Votre solution rapide et facile pour prendre rendez-vous médical en ligne</h2>
-                            
+
+
                             <a routerLink="/login" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Connecter</a>
                         </div>
-                        
+
+
                     </div>
                 </div>
             </div>
@@ -119,28 +136,30 @@
                 <div class="col-lg-4 wow zoomIn" data-wow-delay="0.1s">
                     <div class="bg-primary d-flex flex-column p-5" style="height: 300px;">
                         <h3 class="text-white mb-3">Google maps</h3>
-                        
+
                     </div>
                 </div>
                 <div class="col-lg-4 wow zoomIn" data-wow-delay="0.3s">
                     <div class="bg-dark d-flex flex-column p-5" style="height: 300px;">
                         <h3 class="text-white mb-3">Rechercher Docteur</h3>
                         <div class="date mb-3" id="date" data-target-input="nearest">
-                            <input type="text" class="form-control bg-light border-0 datetimepicker-input"
+
+                            <input type="text"  [(ngModel)]="nom"  class="form-control bg-light border-0 datetimepicker-input"
                                 placeholder="Nom de Docteur" data-target="#date" data-toggle="datetimepicker" style="height: 40px;">
                         </div>
-                        <select class="form-select bg-light border-0 mb-3" style="height: 40px;">
+                        <select   [(ngModel)]="specialite"  class="form-select bg-light border-0 mb-3" style="height: 40px;">
                             <option selected>Sélectionner spécialité</option>
-                            <option value="1">Généraliste</option>
-                            <option value="2">Dentiste</option>
-                            <option value="3">Chirurgien</option>
-                            <option value="4">Dermatologue</option>
-                            <option value="5">Gynécologue</option>
-                            <option value="6">Neurologue</option>
-                            <option value="7">Neutritionniste</option>
-                            <option value="8">Ophtalmologue</option>
-                            <option value="9">Pédiatre</option>
-                            <option value="10">Psychiatre</option>
+                            <option value="Généraliste">Généraliste</option>
+                            <option value="Dentiste">Dentiste</option>
+                            <option value="Chirurgien">Chirurgien</option>
+                            <option value="Dermatologue">Dermatologue</option>
+                            <option value="Gynécologue">Gynécologue</option>
+                            <option value="Neurologue">Neurologue</option>
+                            <option value="Neutritionniste">Neutritionniste</option>
+                            <option value="Ophtalmologue">Ophtalmologue</option>
+                            <option value="Pédiatre">Pédiatre</option>
+                            <option value="Psychiatre">Psychiatre</option>
+
                         </select>
                         <button class="btn btn-light" (click)="searchDoctors()">Chercher</button>
                     </div>
@@ -157,33 +176,32 @@
     <!-- Banner Start -->
 
 
-    
-
-    
 
 
     <div class="container-fluid py-5">
         <div class="container">
           <div class="row g-5">
             <!-- Use ngFor to iterate through doctors -->
-            <div class="col-lg-3 wow slideInUp" *ngFor="let doctor of doctors" (click)="viewDoctorProfile(doctor._id)" [ngClass]="'wow slideInUp'" data-wow-delay="0.3s">
+
+            <div class="col-lg-3 wow slideInUp" *ngFor="let doctor of doctors" [ngClass]="'wow slideInUp'" data-wow-delay="0.3s">
               <div class="team-item">
                 <div class="position-relative rounded-top" style="z-index: 1;">
                   <img class="img-fluid rounded-top w-100" src="assets/img/docteur-icon.png">
-                  
+
+
                 </div>
                 <div class="team-text position-relative bg-light text-center rounded-bottom p-4 pt-5">
-                    <h3 class="mb-2">{{ doctor.nom }} {{ doctor.prenom }}</h3>
+                  <a [routerLink]="['/doctor', doctor._id]"><h3 class="mb-2">{{ doctor.nom }} {{ doctor.prenom }}</h3></a>
                     <p class="text-primary mb-0">{{ doctor.specialite }}</p>
                     <h4 class="mb-2">{{ doctor.adresse }}</h4>
-                  
+
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      
+
 
 
     <!-- Newsletter Start -->
@@ -200,7 +218,7 @@
         </div>
     </div>
     <!-- Newsletter End -->
-    
+
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light py-5 wow fadeInUp" data-wow-delay="0.3s" style="margin-top: -75px;">
@@ -226,7 +244,7 @@
                         <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-3 col-md-6">
                     <h3 class="text-white mb-4">Follow Us</h3>
                     <div class="d-flex">
@@ -247,7 +265,9 @@
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <p class="mb-0">Designed by <a class="text-white border-bottom" href="https://htmlcodex.com">HTML Codex</a><br>
-                        Distributed by <a class="text-white border-bottom" href="https://themewagon.com">ThemeWagon</a>              
+
+                        Distributed by <a class="text-white border-bottom" href="https://themewagon.com">ThemeWagon</a>
+
                     </p>
                 </div>
             </div>
@@ -257,7 +277,7 @@
 
 
     <!-- Back to Top -->
-   
+
 
     <!-- JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -271,7 +291,7 @@
     <script src="assets/lib/twentytwenty/jquery.event.move.js"></script>
     <script src="assets/lib/twentytwenty/jquery.twentytwenty.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    
+
     <!-- Template Javascript -->
     <script src="assets/js/main.js"></script>
 

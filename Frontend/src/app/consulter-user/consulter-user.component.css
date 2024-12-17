@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container-layout {
+  display: flex;
+  height: 100vh;
+}
+
+.side-menu {
+  width: 200px;
+  background-color: #343a40;
+  color: white;
+  padding: 20px;
+}
+
+.side-menu h5 {
+  margin-bottom: 1.5rem;
+}
+
+.side-menu .nav-link {
+  color: #ffffff;
+  margin: 0.5rem 0;
+}
+
+.content-area {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 500px;
+}

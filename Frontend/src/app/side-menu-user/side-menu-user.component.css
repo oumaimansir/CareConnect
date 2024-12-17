@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container-layout {
+  display: flex;
+  height: 100vh; /* Ensure the layout container is full height */
+}
+
+.side-menu {
+  width: 200px;
+  background-color: #343a40;
+  color: white;
+  padding: 20px;
+  height: 100vh; /* Make the side menu span the full viewport height */
+  box-sizing: border-box; /* Ensure padding doesn't add extra width or height */
+}
+
+.side-menu h5 {
+  margin-bottom: 1.5rem;
+}
+
+.side-menu .nav-link {
+  color: #ffffff;
+  margin: 0.5rem 0;
+}
+
+.content-area {
+  flex: 1; /* Take up remaining space */
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 500px;
+}

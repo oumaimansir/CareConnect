@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { User } from '../models/user.model';
@@ -10,12 +12,22 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthentificationService {
-  
+
+
   private apiUrl ='http://localhost:3001/api/comptes';
   private apiUrlPatients ='http://localhost:3001/api/patients';
 
+  private url_docteurs = 'http://localhost:3001/api/docteur'
+
+
   private userNameSubject = new BehaviorSubject<string | null>(null);
   userName$ = this.userNameSubject.asObservable();
+
+  private emailSubject = new BehaviorSubject<string | null>(null);
+  email$ = this.emailSubject.asObservable();
+
+  private roleSubject = new BehaviorSubject<string | null>(null);
+  role$ = this.roleSubject.asObservable();
 
   setUserName(name: string) {
     this.userNameSubject.next(name);
@@ -23,6 +35,20 @@ export class AuthentificationService {
 
   getUserName(): string | null {
     return this.userNameSubject.getValue();
+  }
+  setEmail(name: string) {
+    this.emailSubject.next(name);
+  }
+
+  getEmail(): string | null {
+    return this.emailSubject.getValue();
+  }
+  setRole(name: string) {
+    this.roleSubject.next(name);
+  }
+
+  getRole(): string | null {
+    return this.roleSubject.getValue();
   }
   constructor(
     private http: HttpClient,
@@ -71,20 +97,17 @@ export class AuthentificationService {
       })
     );
   }
+
   getCompteByEmail(email: string): Observable<any> {
     const body = { email: email};
-    return this.http.post<any>(`${this.apiUrl}/email`, body).pipe(
-      catchError((error) => {
-        console.error('Error during login:', error);
-        return throwError('Login failed. Please try again.'); // Vous pouvez personnaliser ce message d'erreur
-      })
-    );
+    return this.http.post<any>(`${this.apiUrl}/email`, body);
   }
-  
+
   updateCompte(id: string, compteData: any): Observable<any> {
-    
-    return this.http.put<any>(`${this.apiUrlPatients}/${id}`, compteData);
+
+    return this.http.put<any>(`${this.apiUrl}/${id}`, compteData);
   }
+
   updateUser(id: string, userData: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/${id}`, userData);
   }
@@ -122,13 +145,29 @@ export class AuthentificationService {
   isAdmin(): boolean {
     return this.getUserRole() === 'admin';
   }
-  getDocteurs (): Observable<any> {
+
+ /* getDocteurs (): Observable<any> {
     return this.http.get<any>(`http://localhost:3001/api/docteur/all`);
-  }
+  }*/
 
   getDoctorById(doctorId: string): Observable<any> {
     return this.http.get<any>(`http://localhost:3001/api/docteur/${doctorId}`);
   }
+
+  getDocteurs(nom: string, specialite: string, localisation: string): Observable<any> {
+    const body = { nom, specialite, localisation };
+
+    return this.http.post<any>(`${this.url_docteurs}/search`, body).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Erreur détectée dans le service:', error);
+        return throwError(error); // Propager l'erreur pour une gestion dans le composant
+      })
+    );
+  }
+
+
+
+
 
 
 

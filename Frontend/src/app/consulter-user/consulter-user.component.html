@@ -1,6 +1,6 @@
 
 <div class="container-layout">
-  <app-side-menu></app-side-menu>
+  <app-side-menu-user></app-side-menu-user>
 
   <!-- Main Content -->
   <div class="content-area">
@@ -12,13 +12,7 @@
           <h5 class="mb-4">Consulter Compte</h5>
 
             <!-- Email input -->
-            <div class="form-group">
-              <input type="email" id="email" name="email" class="form-control" placeholder="E-mail "   [(ngModel)]="emailToSearch" required/>
 
-            </div>
-            <button (click)="search()" class="btn btn-secondary mb-3">
-              Rechercher
-            </button>
             <form [formGroup]="updateForm">
             <!-- Nom -->
             <div class="form-group">

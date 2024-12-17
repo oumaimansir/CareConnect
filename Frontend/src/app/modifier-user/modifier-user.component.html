@@ -1,6 +1,6 @@
 
 <div class="container-layout">
-  <app-side-menu></app-side-menu>
+  <app-side-menu-user></app-side-menu-user>
 
   <!-- Main Content -->
   <div class="content-area">
@@ -12,41 +12,35 @@
           <h5 class="mb-4">Modifier Compte</h5>
 
             <!-- Email input -->
-            <div class="form-group">
-              <input type="email" id="email" name="email" class="form-control" placeholder="E-mail "   [(ngModel)]="emailToSearch" required />
 
-            </div>
-            <button (click)="search()" class="btn btn-secondary mb-3">
-              Rechercher
-            </button>
             <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
             <!-- Nom -->
             <div class="form-group">
-              <input type="text" id="nom" name="nom" [value]="userdata.nom " formControlName="nom"  placeholder="Nom " class="form-control" />
+              <input type="text" id="nom" name="nom" [value]="userdata.nom " formControlName="nom" placeholder="Nom " class="form-control" />
 
             </div>
 
             <!-- Prénom -->
             <div class="form-group">
-              <input type="text" id="prenom" [value]="userdata.prenom " name="prenom" formControlName="prenom"  placeholder="Prénom " class="form-control" />
+              <input type="text" id="prenom" [value]="userdata.prenom " name="prenom" formControlName="prenom" placeholder="Prénom " class="form-control" />
 
             </div>
 
             <!-- Numéro de téléphone -->
             <div class="form-group">
-              <input type="text" id="numtel" [value]="userdata.numtel " name="numtel" formControlName="numtel"   placeholder="Numéro de Téléphone" class="form-control" />
+              <input type="text" id="numtel" [value]="userdata.numtel " name="numtel" formControlName="numtel" placeholder="Numéro de Téléphone" class="form-control" />
 
             </div>
 
             <!-- Adresse -->
             <div class="form-group">
-              <input type="text" id="adresse" [value]="userdata.adresse " name="adresse" formControlName="adresse"  placeholder="Adresse" class="form-control" />
+              <input type="text" id="adresse" [value]="userdata.adresse " name="adresse" formControlName="adresse" placeholder="Adresse" class="form-control" />
 
             </div>
 
             <!-- Date de naissance -->
             <div class="form-group">
-              <input type="date" id="datenaissance"[value]="userdata.datenaissance?.split('T')[0]" name="datenaissance" formControlName="datenaissance"  class="form-control" />
+              <input type="date" id="datenaissance"[value]="userdata.datenaissance?.split('T')[0]" name="datenaissance" formControlName="datenaissance" class="form-control" />
 
             </div>
 

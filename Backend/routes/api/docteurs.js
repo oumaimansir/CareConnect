@@ -215,4 +215,42 @@ router.put('/:id/etat', async (req, res) => {
     }
   });
   
+
+  router.post('/search', async (req, res) => {
+    const { nom, localisation, specialite } = req.body; // on récupère les données du corps de la requête
+
+    // Vérification si tous les champs sont vides
+    if (!nom && !localisation && !specialite) {
+        return res.status(400).json({ 
+            message: 'Veuillez fournir au moins un critère de recherche (nom, localisation ou spécialité).' 
+        });
+    }
+
+    try {
+        const query = {};
+
+        if (nom) {
+            query.nom = { $regex: nom, $options: 'i' }; // Recherche insensible à la casse
+        }
+        if (localisation) {
+            query.adresse = { $regex: localisation, $options: 'i' }; // Recherche insensible à la casse
+        }
+        if (specialite) {
+            query.specialite = { $regex: specialite, $options: 'i' }; // Recherche insensible à la casse
+        }
+
+        const docteurs = await Docteur.find(query);
+
+        if (docteurs.length === 0) {
+            return res.status(404).json({ message: 'Aucun docteur trouvé avec ces critères' });
+        }
+
+        res.status(200).json(docteurs);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Erreur lors de la récupération des docteurs', error });
+    }
+});
+
+
 module.exports=router;

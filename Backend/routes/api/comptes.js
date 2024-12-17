@@ -33,9 +33,13 @@ router.post("/login",(req,res)=>{
                         return res.status(500).json({error:"Internal server error"});
                     }
                     return res.status(200).json({
-                        token: token,
-                        nom: compte.nom,
-                        prenom: compte.prenom, // Ensure these fields exist in your model
+
+                     // compte,
+                      token:token,
+                     nom: compte.nom,
+                    prenom: compte.prenom,
+                    role:compte.role // Ensure these fields exist in your model
+
                         });
                 }
             );
@@ -227,6 +231,7 @@ router.put('/:id/etat', async (req, res) => {
       res.status(500).json({ message: 'Erreur lors de la suppression de l\'utilisateur', error });
     }
   });
+
   // Route pour récupérer un compte par email
 router.post('/email', async (req, res) => {
     const { email } = req.body;
@@ -243,5 +248,5 @@ router.post('/email', async (req, res) => {
     }
 });
 
-  
+ 
 module.exports=router;

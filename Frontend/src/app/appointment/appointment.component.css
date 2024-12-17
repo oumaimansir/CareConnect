@@ -3,6 +3,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
     height: 100vh; /* Full screen height */
     display: flex;
     justify-content: center;
@@ -17,10 +18,12 @@
     width: 400px;
 }
 
+
 .text {
     text-align: center;
     margin-bottom: 20px;
     color: darkblue;
+
     font-size: 1.5em;
     font-weight: bold;
 }
@@ -52,4 +55,5 @@ input {
 
 .reserve-button:hover {
     background-color: #0056b3;
+
 }
